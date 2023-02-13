@@ -43,7 +43,12 @@ const Apod = () => {
     
     const handleDateChange = (event) => {
       const date = event.target.value;
-      setSelectedDate(date);
+      if(date<=new Date().toISOString().substring(0, 10)){
+        setSelectedDate(date);
+      }
+      else{
+        setSelectedDate(new Date().toISOString().substring(0, 10));
+      }
     };
 
     const apiDateUrl = useCallback(() => {
