@@ -6,6 +6,7 @@ import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import ApodComponent from '../components/ApodComponent';
+import apiData from '../utility/apiData';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -40,7 +41,6 @@ const Apod = () => {
     //const apiKey = "DEMO_KEY";
     const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
     const [selectedDate, setSelectedDate] = useState(new Date().toISOString().substring(0, 10));
-    
     const handleDateChange = (event) => {
       const date = event.target.value;
       if(date<=new Date().toISOString().substring(0, 10)){
@@ -50,7 +50,6 @@ const Apod = () => {
         setSelectedDate(new Date().toISOString().substring(0, 10));
       }
     };
-
     const apiDateUrl = useCallback(() => {
         return apiUrl + `&date=${selectedDate}`;
     }, [apiUrl, selectedDate]);
