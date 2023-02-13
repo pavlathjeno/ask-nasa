@@ -6,9 +6,9 @@ export default function dataFetch(defaultUrl) {
     useEffect(() => {
         axios.get(`${defaultUrl}`).then(
             (response) => {
+                console.log(response.headers);
                 setData(response.data);
             });
     }, []);
-    console.log(data);
     return data;
 }
